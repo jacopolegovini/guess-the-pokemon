@@ -9,6 +9,8 @@ export default {
       pokemonName: '',
       pokemonTypes: [],
       typeChosen: '',
+      typeChosenIsCorrect: false,
+      answerDone: false,
     }
   },
   methods: {
@@ -31,14 +33,17 @@ export default {
       if (this.pokemonTypes.length === 1) {
         if (answer === this.pokemonTypes[0].type.name) {
           console.log('Il tipo è giusto')
-          return true;
+          this.typeChosenIsCorrect = true;
+          console.log(this.typeChosenIsCorrect)
         } else {
           console.log('Il tipo è sbagliato')
-          return false;
+          this.typeChosenIsCorrect = false;
+          console.log(this.typeChosenIsCorrect)
         }
       } else {
         console.log('Ha due tipi')
       }
+      this.answerDone = true;
     },
   },
   mounted() {
@@ -63,6 +68,8 @@ export default {
 
   <!-- Main -->
   <main>
+
+    <!-- Question -->
     <div class="pokemon-to-guess">
       <div class="pokemon-image">
         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/257.png" alt="blaziken">
@@ -73,6 +80,8 @@ export default {
         </section>
       </div>
     </div>
+
+    <!-- Answer -->
     <div class="answer">
       <form action="">
         <select name="pokemon-type" id="pokemon-type" v-model="typeChosen">
@@ -83,6 +92,16 @@ export default {
         </select>
       </form>
       <button @click="isAnswerRight(typeChosen)">I'm sure!</button>
+    </div>
+
+    <!-- Result -->
+    <div class="result" v-if="answerDone">
+      <div class="right-answer" v-if="typeChosenIsCorrect">
+        <p>Right answer!</p>
+      </div>
+      <div class="wrong-answer" v-else>
+        <p>Wrong answer!</p>
+      </div>
     </div>
   </main>
 </template>
