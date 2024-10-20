@@ -1,5 +1,6 @@
 <script>
 import MainCard from './components/MainCard.vue';
+import axios from 'axios';
 
 export default {
   data() {
