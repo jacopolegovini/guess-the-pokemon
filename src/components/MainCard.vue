@@ -5,18 +5,40 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      apiCall: 'https://pokeapi.co/api/v2/pokemon/blaziken',
+      apiCall: 'https://pokeapi.co/api/v2/pokemon/torchic',
       pokemonName: '',
+      pokemonTypes: [],
+      typeChosen: '',
     }
   },
   methods: {
     getApi() {
         axios.get(this.apiCall)
             .then((response) => {
+
+                // Assegna il nome al Pokemon
                 console.log(response.data.forms[0].name)
                 this.pokemonName = response.data.forms[0].name;
                 this.pokemonName = this.pokemonName;
+
+                // Estra il tipo del pokemon e lo assegna alla variabile
+                console.log(response.data.types)
+                this.pokemonTypes = response.data.types;
+                console.log(this.pokemonTypes[0].type.name)
         })
+    },
+    isAnswerRight(answer) {
+      if (this.pokemonTypes.length === 1) {
+        if (answer === this.pokemonTypes[0].type.name) {
+          console.log('Il tipo è giusto')
+          return true;
+        } else {
+          console.log('Il tipo è sbagliato')
+          return false;
+        }
+      } else {
+        console.log('Ha due tipi')
+      }
     },
   },
   mounted() {
@@ -53,12 +75,14 @@ export default {
     </div>
     <div class="answer">
       <form action="">
-        <select name="pokemon-type" id="pokemon-type">
+        <select name="pokemon-type" id="pokemon-type" v-model="typeChosen">
           <option value="fire">Fire</option>
           <option value="fighting">Fighting</option>
+          <option value="rock">Rock</option>
+          <option value="water">Water</option>
         </select>
-        <button>I'm sure!</button>
       </form>
+      <button @click="isAnswerRight(typeChosen)">I'm sure!</button>
     </div>
   </main>
 </template>
