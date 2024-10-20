@@ -5,9 +5,9 @@ export default {
   data() {
     return {
       apiCall: 'https://pokeapi.co/api/v2/pokemon/',
+      urlPokemonImg: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
       pokemonName: '',
       pokemonIdRandom: 0,
-      pokemonFromId: [],
     }
   }, 
   methods: {
@@ -25,12 +25,17 @@ export default {
     getRandomPokemonId() {
         this.pokemonIdRandom = Math.floor(Math.random() * 1025) + 1
     },
+    getPokemonImg() {
+        this.urlPokemonImg = this.urlPokemonImg + this.pokemonIdRandom + '.png'
+        console.log(this.urlPokemonImg)
+    }
   },
   created() {
     this.getRandomPokemonId()
   },
   mounted() {
     this.getPokemonName()
+    this.getPokemonImg()
   }
 }
 </script>
@@ -38,7 +43,7 @@ export default {
 <template>
     <div class="pokemon-to-guess">
       <div class="pokemon-image">
-        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/257.png" alt="blaziken">
+        <img :src="urlPokemonImg" alt="blaziken">
       </div>
       <div class="pokemon-question">
         <section>
