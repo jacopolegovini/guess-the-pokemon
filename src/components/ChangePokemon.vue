@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      apiCall: 'https://pokeapi.co/api/v2/pokemon/torchic',
+      apiCall: 'https://pokeapi.co/api/v2/pokemon/',
       pokemonName: '',
       pokemonIdRandom: 0,
       pokemonFromId: [],
@@ -12,23 +12,25 @@ export default {
   }, 
   methods: {
     getPokemonName() {
+        // Unisci l'api generale al numero random creato
+        this.apiCall = this.apiCall + this.pokemonIdRandom;
         axios.get(this.apiCall)
             .then((response) => {
-                // Individua il nome corretto per l'id random arrivato
-                this.pokemonFromId = 
-                console.log(this.pokemonIdRandom)
                 // Assegna il nome al Pokemon
+                console.log(this.apiCall)
                 console.log(response.data.forms[0].name)
                 this.pokemonName = response.data.forms[0].name;
         })
     },
     getRandomPokemonId() {
-        this.pokemonId = Math.floor(Math.random() * 1302) + 1
+        this.pokemonIdRandom = Math.floor(Math.random() * 1025) + 1
     },
+  },
+  created() {
+    this.getRandomPokemonId()
   },
   mounted() {
     this.getPokemonName()
-    this.getRandomPokemonId()
   }
 }
 </script>
