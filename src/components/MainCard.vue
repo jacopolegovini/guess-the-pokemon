@@ -19,7 +19,6 @@ export default {
       this.apiCall = this.apiCall + this.pokemonIdRandom;
         axios.get(this.apiCall)
             .then((response) => {
-                console.log(this.apiCall)
                 // Estra il tipo del pokemon e lo assegna alla variabile
                 console.log(response.data.types)
                 this.pokemonTypes = response.data.types;
@@ -38,6 +37,7 @@ export default {
           console.log(this.typeChosenIsCorrect)
         }
       } else {
+        // Se il pokemon ha due tipi
         if ((answer === this.pokemonTypes[0].type.name && secondAnswer === this.pokemonTypes[1].type.name) || (answer === this.pokemonTypes[1].type.name && secondAnswer === this.pokemonTypes[0].type.name)) {
           console.log('Il tipo è giusto')
           this.typeChosenIsCorrect = true;
@@ -53,8 +53,11 @@ export default {
     getRandomPokemonId() {
         this.pokemonIdRandom = Math.floor(Math.random() * 1025) + 1
     },
+    getAgainRandomPokemonId() {
+        return Math.floor(Math.random() * 1025) + 1
+    },
   },
-  created() {
+  beforeMount() {
     this.getRandomPokemonId()
   },
   mounted() {
@@ -137,7 +140,12 @@ export default {
         <p>Wrong answer!</p>
       </div>
     </div>
-  </main>
+
+    <!-- Play again -->
+    <div class="play-again" v-if="answerDone">
+      <button @click="pokemonIdRandom = getAgainRandomPokemonId(), console.log(pokemonIdRandom), getApi()">Play Again</button>
+    </div>
+</main>
 </template>
 
 <style scoped>
