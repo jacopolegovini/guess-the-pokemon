@@ -6,7 +6,6 @@ export default {
   data() {
     return {
       apiCall: 'https://pokeapi.co/api/v2/pokemon/torchic',
-      pokemonName: '',
       pokemonTypes: [],
       typeChosen: '',
       typeChosenIsCorrect: false,
@@ -17,12 +16,6 @@ export default {
     getApi() {
         axios.get(this.apiCall)
             .then((response) => {
-
-                // Assegna il nome al Pokemon
-                console.log(response.data.forms[0].name)
-                this.pokemonName = response.data.forms[0].name;
-                this.pokemonName = this.pokemonName;
-
                 // Estra il tipo del pokemon e lo assegna alla variabile
                 console.log(response.data.types)
                 this.pokemonTypes = response.data.types;
@@ -47,7 +40,6 @@ export default {
     },
   },
   mounted() {
-    this.getApi()
   },
   components: {
     ChangePokemon
@@ -56,9 +48,6 @@ export default {
 </script>
 
 <template>
-  <!-- Components -->
-  <ChangePokemon />
-
   <!-- Headers -->
   <header>
     <div class="title">
@@ -70,16 +59,7 @@ export default {
   <main>
 
     <!-- Question -->
-    <div class="pokemon-to-guess">
-      <div class="pokemon-image">
-        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/257.png" alt="blaziken">
-      </div>
-      <div class="pokemon-question">
-        <section>
-          Which type is {{pokemonName}}?
-        </section>
-      </div>
-    </div>
+    <ChangePokemon />
 
     <!-- Answer -->
     <div class="answer">
