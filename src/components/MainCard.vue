@@ -26,6 +26,15 @@ export default {
         </section>
       </div>
     </div>
+    <div class="answer">
+      <form action="">
+        <select name="pokemon-type" id="pokemon-type">
+          <option value="fire">Fire</option>
+          <option value="fighting">Fighting</option>
+        </select>
+        <button>I'm sure!</button>
+      </form>
+    </div>
   </main>
 </template>
 
