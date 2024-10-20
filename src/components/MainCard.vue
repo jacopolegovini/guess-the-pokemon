@@ -8,6 +8,7 @@ export default {
       apiCall: 'https://pokeapi.co/api/v2/pokemon/',
       pokemonTypes: [],
       typeChosen: '',
+      secondTypeChosen: '',
       typeChosenIsCorrect: false,
       answerDone: false,
       pokemonIdRandom: 0,
@@ -25,7 +26,7 @@ export default {
                 console.log(this.apiCall)
         })
     },
-    isAnswerRight(answer) {
+    isAnswerRight(answer, secondAnswer = null) {
       if (this.pokemonTypes.length === 1) {
         if (answer === this.pokemonTypes[0].type.name) {
           console.log('Il tipo è giusto')
@@ -37,7 +38,15 @@ export default {
           console.log(this.typeChosenIsCorrect)
         }
       } else {
-        console.log('Ha due tipi')
+        if ((answer === this.pokemonTypes[0].type.name && secondAnswer === this.pokemonTypes[1].type.name) || (answer === this.pokemonTypes[1].type.name && secondAnswer === this.pokemonTypes[0].type.name)) {
+          console.log('Il tipo è giusto')
+          this.typeChosenIsCorrect = true;
+          console.log(this.typeChosenIsCorrect)
+        } else {
+          console.log('Il tipo è sbagliato')
+          this.typeChosenIsCorrect = false;
+          console.log(this.typeChosenIsCorrect)
+        }
       }
       this.answerDone = true;
     },
@@ -95,8 +104,28 @@ export default {
           <option value="steel">Steel</option>
           <option value="fairy">Fairy</option>
         </select>
+        <select name="pokemon-type" id="pokemon-type" v-model="secondTypeChosen" v-if="pokemonTypes.length === 2">
+          <option value="normal">Normal</option>
+          <option value="fire">Fire</option>
+          <option value="water">Water</option>
+          <option value="electric">Electric</option>
+          <option value="grass">Grass</option>
+          <option value="ice">Ice</option>
+          <option value="fighting">Fighting</option>
+          <option value="poison">Poison</option>
+          <option value="ground">Ground</option>
+          <option value="flying">Flying</option>
+          <option value="psychic">Psychic</option>
+          <option value="bug">Bug</option>
+          <option value="rock">Rock</option>
+          <option value="ghost">Ghost</option>
+          <option value="dragon">Dragon</option>
+          <option value="dark">Dark</option>
+          <option value="steel">Steel</option>
+          <option value="fairy">Fairy</option>
+        </select>
       </form>
-      <button @click="isAnswerRight(typeChosen)">I'm sure!</button>
+      <button @click="isAnswerRight(typeChosen, secondTypeChosen)">I'm sure!</button>
     </div>
 
     <!-- Result -->
