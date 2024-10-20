@@ -7,9 +7,14 @@ export default {
       apiCall: 'https://pokeapi.co/api/v2/pokemon/',
       urlPokemonImg: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
       pokemonName: '',
-      pokemonIdRandom: 0,
+
     }
   }, 
+  props: {
+    pokemonIdRandom: {
+        type: Number
+    }
+  },
   methods: {
     getPokemonName() {
         // Unisci l'api generale al numero random creato
@@ -22,16 +27,14 @@ export default {
                 this.pokemonName = response.data.forms[0].name;
         })
     },
-    getRandomPokemonId() {
-        this.pokemonIdRandom = Math.floor(Math.random() * 1025) + 1
-    },
+
     getPokemonImg() {
         this.urlPokemonImg = this.urlPokemonImg + this.pokemonIdRandom + '.png'
         console.log(this.urlPokemonImg)
     }
   },
   created() {
-    this.getRandomPokemonId()
+
   },
   mounted() {
     this.getPokemonName()
