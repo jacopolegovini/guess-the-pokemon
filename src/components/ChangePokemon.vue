@@ -44,11 +44,11 @@ export default {
 </script>
 
 <template>
-    <div class="pokemon-to-guess">
+    <div class="pokemon-to-guess mt-3">
       <div class="pokemon-image">
-        <img :src="urlPokemonImg" alt="blaziken">
+        <img class="pkm-img" :src="urlPokemonImg" alt="">
       </div>
-      <div class="pokemon-question">
+      <div class="pokemon-question mt-3">
         <section>
           Which type is {{pokemonName}}?
         </section>

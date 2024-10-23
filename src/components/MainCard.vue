@@ -80,70 +80,72 @@ export default {
   <!-- Main -->
   <main>
 
-    <!-- Question -->
-    <ChangePokemon 
-      :pokemonIdRandom="pokemonIdRandom"/>
-
-    <!-- Answer -->
-    <div class="answer">
-      <form action="">
-        <select name="pokemon-type" id="pokemon-type" v-model="typeChosen">
-          <option value="normal">Normal</option>
-          <option value="fire">Fire</option>
-          <option value="water">Water</option>
-          <option value="electric">Electric</option>
-          <option value="grass">Grass</option>
-          <option value="ice">Ice</option>
-          <option value="fighting">Fighting</option>
-          <option value="poison">Poison</option>
-          <option value="ground">Ground</option>
-          <option value="flying">Flying</option>
-          <option value="psychic">Psychic</option>
-          <option value="bug">Bug</option>
-          <option value="rock">Rock</option>
-          <option value="ghost">Ghost</option>
-          <option value="dragon">Dragon</option>
-          <option value="dark">Dark</option>
-          <option value="steel">Steel</option>
-          <option value="fairy">Fairy</option>
-        </select>
-        <select name="pokemon-type" id="pokemon-type" v-model="secondTypeChosen" v-if="pokemonTypes.length === 2">
-          <option value="normal">Normal</option>
-          <option value="fire">Fire</option>
-          <option value="water">Water</option>
-          <option value="electric">Electric</option>
-          <option value="grass">Grass</option>
-          <option value="ice">Ice</option>
-          <option value="fighting">Fighting</option>
-          <option value="poison">Poison</option>
-          <option value="ground">Ground</option>
-          <option value="flying">Flying</option>
-          <option value="psychic">Psychic</option>
-          <option value="bug">Bug</option>
-          <option value="rock">Rock</option>
-          <option value="ghost">Ghost</option>
-          <option value="dragon">Dragon</option>
-          <option value="dark">Dark</option>
-          <option value="steel">Steel</option>
-          <option value="fairy">Fairy</option>
-        </select>
-      </form>
-      <button @click="isAnswerRight(typeChosen, secondTypeChosen)">I'm sure!</button>
-    </div>
-
-    <!-- Result -->
-    <div class="result" v-if="answerDone">
-      <div class="right-answer" v-if="typeChosenIsCorrect">
-        <p>Right answer!</p>
+    <div class="d-flex justify-content-center flex-column align-center">
+      <!-- Question -->
+      <ChangePokemon 
+        :pokemonIdRandom="pokemonIdRandom"/>
+  
+      <!-- Answer -->
+      <div class="answer my-2 d-flex flex-column">
+        <form action="" class="d-flex gap-2">
+          <select class="select-style form-select" name="pokemon-type" id="pokemon-type" v-model="typeChosen">
+            <option value="normal">Normal</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="electric">Electric</option>
+            <option value="grass">Grass</option>
+            <option value="ice">Ice</option>
+            <option value="fighting">Fighting</option>
+            <option value="poison">Poison</option>
+            <option value="ground">Ground</option>
+            <option value="flying">Flying</option>
+            <option value="psychic">Psychic</option>
+            <option value="bug">Bug</option>
+            <option value="rock">Rock</option>
+            <option value="ghost">Ghost</option>
+            <option value="dragon">Dragon</option>
+            <option value="dark">Dark</option>
+            <option value="steel">Steel</option>
+            <option value="fairy">Fairy</option>
+          </select>
+          <select class="select-style form-select" name="pokemon-type" id="pokemon-type" v-model="secondTypeChosen" v-if="pokemonTypes.length === 2">
+            <option value="normal">Normal</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="electric">Electric</option>
+            <option value="grass">Grass</option>
+            <option value="ice">Ice</option>
+            <option value="fighting">Fighting</option>
+            <option value="poison">Poison</option>
+            <option value="ground">Ground</option>
+            <option value="flying">Flying</option>
+            <option value="psychic">Psychic</option>
+            <option value="bug">Bug</option>
+            <option value="rock">Rock</option>
+            <option value="ghost">Ghost</option>
+            <option value="dragon">Dragon</option>
+            <option value="dark">Dark</option>
+            <option value="steel">Steel</option>
+            <option value="fairy">Fairy</option>
+          </select>
+        </form>
+        <button class="btn btn-primary my-2" @click="isAnswerRight(typeChosen, secondTypeChosen)">I'm sure!</button>
       </div>
-      <div class="wrong-answer" v-else>
-        <p>Wrong answer!</p>
+  
+      <!-- Result -->
+      <div class="result" v-if="answerDone">
+        <div class="right-answer" v-if="typeChosenIsCorrect">
+          <p>Right answer!</p>
+        </div>
+        <div class="wrong-answer" v-else>
+          <p>Wrong answer!</p>
+        </div>
       </div>
-    </div>
-
-    <!-- Play again -->
-    <div class="play-again" v-if="answerDone">
-      <button @click="pokemonIdRandom = getAgainRandomPokemonId(), console.log(pokemonIdRandom), getApi()">Play Again</button>
+  
+      <!-- Play again -->
+      <div class="play-again" v-if="answerDone">
+        <button @click="pokemonIdRandom = getAgainRandomPokemonId(), console.log(pokemonIdRandom), getApi()">Play Again</button>
+      </div>
     </div>
 </main>
 </template>
