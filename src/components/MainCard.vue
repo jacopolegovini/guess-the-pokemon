@@ -134,17 +134,17 @@ export default {
   
       <!-- Result -->
       <div class="result" v-if="answerDone">
-        <div class="right-answer" v-if="typeChosenIsCorrect">
+        <div class="right-answer text-primary" v-if="typeChosenIsCorrect">
           <p>Right answer!</p>
         </div>
-        <div class="wrong-answer" v-else>
+        <div class="wrong-answer text-danger" v-else>
           <p>Wrong answer!</p>
         </div>
       </div>
   
       <!-- Play again -->
       <div class="play-again" v-if="answerDone">
-        <button @click="pokemonIdRandom = getAgainRandomPokemonId(), console.log(pokemonIdRandom), getApi()">Play Again</button>
+        <button class="btn btn-secondary" @click="pokemonIdRandom = getAgainRandomPokemonId(), console.log(pokemonIdRandom), getApi()">Play Again</button>
       </div>
     </div>
 </main>
