@@ -50,14 +50,17 @@ export default {
       }
       this.answerDone = true;
     },
+    pageReload() {
+      location.reload();
+    },
     getRandomPokemonId() {
       this.pokemonIdRandom = Math.floor(Math.random() * 1025) + 1
     },
-    getAgainRandomPokemonId() {
-      return Math.floor(Math.random() * 1025) + 1
-    },
+    // getAgainRandomPokemonId() {
+    //   return Math.floor(Math.random() * 1025) + 1
+    // },
   },
-  beforeMount() {
+  created() {
     this.getRandomPokemonId()
   },
   mounted() {
@@ -144,8 +147,7 @@ export default {
 
       <!-- Play again -->
       <div class="play-again" v-if="answerDone">
-        <button class="btn btn-secondary"
-          @click="pokemonIdRandom = getAgainRandomPokemonId(), console.log(pokemonIdRandom), getApi()">Play
+        <button class="btn btn-secondary" @click="pageReload()">Play
           Again</button>
       </div>
     </div>
