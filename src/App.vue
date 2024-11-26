@@ -1,14 +1,17 @@
 <script>
+import AppHeader from './components/AppHeader.vue';
 import MainCard from './components/MainCard.vue';
+
 import axios from 'axios';
 
 export default {
   data() {
     return {
-      
+
     }
   },
   components: {
+    AppHeader,
     MainCard,
   }
 }
@@ -16,6 +19,7 @@ export default {
 
 <template>
   <div class="container">
+    <AppHeader />
     <MainCard />
   </div>
 </template>
