@@ -77,7 +77,7 @@ export default {
   <!-- Headers -->
   <header>
     <div class="title">
-      <h1>Guess The Pokemon</h1>
+      <h1>Guess The <span class="pokemon-logo"><img src="../assets/pokemon-23.svg" alt="pokemon logo"></span></h1>
     </div>
   </header>
 
