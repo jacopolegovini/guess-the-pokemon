@@ -140,7 +140,7 @@ export default {
       </div>
 
       <!-- Play again -->
-      <div class="play-again" v-if="answerDone">
+      <div class="play-again mb-3" v-if="answerDone">
         <button class="btn btn-secondary" @click="pageReload()">Play
           Again</button>
       </div>
@@ -149,6 +149,12 @@ export default {
 </template>
 
 <style scoped>
+* {
+  /* font-family: "Lato", serif;
+  font-weight: 400;
+  font-style: normal; */
+}
+
 .normal {
   background-color: #A8A878;
 }
