@@ -46,13 +46,13 @@ export default {
 
 <template>
   <div class="pokemon-to-guess mt-3">
-    <div class="pokemon-image">
+    <div class="pokemon-image d-flex justify-content-center align-items-center">
       <img class="pkm-img" :src="urlPokemonImg" alt="">
     </div>
     <div class="pokemon-question mt-3">
-      <section>
-        Which type is {{ pokemonName }}?
-      </section>
+      <p class="pokemon-name">
+        Which type is <span>{{ pokemonName }}</span>?
+      </p class="pokemon-name">
     </div>
   </div>
 </template>

@@ -31,7 +31,20 @@ h1 {
 
 
 // ChangePokemon
-.pkm-img {
-    border: 1px dotted #0D6EFD;
-    border-radius: 20px;
+
+.pokemon-image {
+    height: 190px;
+    width: 190px;
+    background-image: url("assets/pokeball.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pokemon-name {
+    text-align: center;
+}
+
+.pokemon-name span {
+    text-transform: capitalize;
 }

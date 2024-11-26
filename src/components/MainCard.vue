@@ -56,6 +56,7 @@ export default {
     getRandomPokemonId() {
       this.pokemonIdRandom = Math.floor(Math.random() * 1025) + 1
     },
+    // TODO Trovare un modo per togliere il reload
     // getAgainRandomPokemonId() {
     //   return Math.floor(Math.random() * 1025) + 1
     // },
