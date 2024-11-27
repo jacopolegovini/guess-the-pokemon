@@ -149,12 +149,6 @@ export default {
 </template>
 
 <style scoped>
-* {
-  /* font-family: "Lato", serif;
-  font-weight: 400;
-  font-style: normal; */
-}
-
 .normal {
   background-color: #A8A878;
 }
