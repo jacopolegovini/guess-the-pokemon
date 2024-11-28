@@ -17,8 +17,8 @@ export default {
 
 <template>
   <div class="full-page">
-    <div class="container mt-4 card-general">
-      <AppHeader />
+    <AppHeader />
+    <div class="mt-4 card-general">
       <MainCard />
     </div>
   </div>
@@ -34,6 +34,7 @@ export default {
 }
 
 .card-general {
+  max-width: 1000px;
   border-radius: 20px;
   -webkit-box-shadow: 8px 0px 0px 0px #DCD0C0, 0px 8px 0px 0px #B1938B, -8px 0px 0px 0px #4E4E56, 0px 0px 0px 8px #DA635D, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   box-shadow: 8px 0px 0px 0px #375DA9, 0px 8px 0px 0px #C92721, -8px 0px 0px 0px #FFCC01, 0px 0px 0px 8px #555557, 5px 5px 15px 5px rgba(0, 0, 0, 0);
